@@ -168,9 +168,31 @@ public class Videoclub {
 	 * - Si el género no existe o no tiene películas, retorna null, no lanza
 	 *   excepción.
 	 */
+	
 	public Pelicula peliculaMasAntiguaDeGenero(String genero) {
-		// TODO: reemplazar esta línea por la lógica descrita arriba.
-		throw new UnsupportedOperationException("TODO: completar peliculaMasAntiguaDeGenero() en Videoclub");
+
+		List<Pelicula> peliculasDelGenero = new ArrayList<>();
+
+		for (Pelicula pelicula : peliculas) {
+
+			if (pelicula.getGenero().equals(genero)) {
+				peliculasDelGenero.add(pelicula);
+			}
+		}
+
+		Pelicula masAntigua = null;
+
+		for (Pelicula pelicula : peliculasDelGenero) {
+
+			if (masAntigua == null
+					|| pelicula.getAnioEstreno()
+							< masAntigua.getAnioEstreno()) {
+
+				masAntigua = pelicula;
+			}
+		}
+
+		return masAntigua;
 	}
 
 	/**
